@@ -1,0 +1,18 @@
+# NEXORA AI backend runtime dependencies
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+sqlalchemy==2.0.36
+alembic==1.14.0
+pydantic==2.10.4
+email-validator==2.2.0
+python-dotenv==1.0.1
+python-multipart==0.0.20
+argon2-cffi==23.1.0
+httpx==0.28.1
+openai==1.59.3
+pandas==2.2.3
+openpyxl==3.1.5
+PyMuPDF==1.25.1
+python-docx==1.1.2
+Pillow==11.0.0
+beautifulsoup4==4.12.3

@@ -1,0 +1,257 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --scrollbar: #ccd4e3;
+    --scrollbar-hover: #98a5bc;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --scrollbar: #253b63;
+    --scrollbar-hover: #33517f;
+  }
+
+  * {
+    @apply border-mist-200 dark:border-white/10;
+  }
+
+  html,
+  body,
+  #root {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-mist-50 font-sans text-graphite-900 antialiased dark:bg-navy-950 dark:text-mist-100;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-electric-500/25 text-inherit;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--scrollbar);
+    border-radius: 999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--scrollbar-hover);
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-electric-500/70 ring-offset-2 ring-offset-mist-50 dark:ring-offset-navy-950;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+
+  [disabled] {
+    cursor: not-allowed;
+  }
+}
+
+@layer components {
+  .app-surface {
+    @apply rounded-2xl border border-mist-200/80 bg-white shadow-panel dark:border-white/[0.07] dark:bg-navy-900;
+  }
+
+  .app-panel {
+    @apply rounded-xl border border-mist-200/70 bg-white/80 dark:border-white/[0.06] dark:bg-white/[0.03];
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-mist-500 dark:text-mist-400;
+  }
+
+  .heading-display {
+    @apply font-display font-semibold tracking-[-0.02em];
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.1em] text-mist-500 dark:text-mist-400;
+  }
+
+  .field-hint {
+    @apply mt-1.5 text-xs leading-relaxed text-mist-500 dark:text-mist-400;
+  }
+
+  .field-error {
+    @apply mt-1.5 text-xs font-medium text-rose-600 dark:text-rose-400;
+  }
+
+  .divider {
+    @apply h-px w-full bg-mist-200 dark:bg-white/10;
+  }
+
+  .card-hover {
+    @apply transition duration-200 hover:-translate-y-0.5 hover:border-electric-400/50 hover:shadow-float;
+  }
+
+  .icon-tile {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-electric-500/15 bg-electric-500/10 text-electric-600 dark:text-electric-300;
+  }
+
+  .skeleton {
+    @apply animate-shimmer rounded-lg bg-gradient-to-r from-mist-100 via-white to-mist-100 bg-[length:500px_100%] dark:from-white/[0.04] dark:via-white/[0.09] dark:to-white/[0.04];
+  }
+
+  .nav-item {
+    @apply flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-mist-300 transition hover:bg-white/[0.06] hover:text-white;
+  }
+
+  .nav-item-active {
+    @apply bg-electric-500/[0.16] text-white shadow-[inset_0_0_0_1px_rgba(91,149,255,.22)];
+  }
+
+  .sidebar-label {
+    @apply px-3 pb-1.5 pt-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-mist-500;
+  }
+
+  .pill {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-semibold leading-none;
+  }
+
+  .table-base {
+    @apply w-full border-collapse text-left text-sm;
+  }
+
+  .table-base th {
+    @apply whitespace-nowrap border-b border-mist-200 px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-mist-500 dark:border-white/10 dark:text-mist-400;
+  }
+
+  .table-base td {
+    @apply border-b border-mist-100 px-4 py-3 align-middle dark:border-white/[0.06];
+  }
+
+  .table-base tbody tr {
+    @apply transition hover:bg-mist-50/80 dark:hover:bg-white/[0.025];
+  }
+
+  .kbd {
+    @apply rounded-md border border-mist-200 bg-mist-50 px-1.5 py-0.5 font-mono text-[10px] font-semibold text-mist-500 dark:border-white/10 dark:bg-white/5 dark:text-mist-400;
+  }
+}
+
+/* Markdown answer rendering */
+.prose-nexora {
+  @apply text-[15px] leading-7 text-graphite-800 dark:text-mist-200;
+}
+.prose-nexora > * + * {
+  @apply mt-3;
+}
+.prose-nexora h1,
+.prose-nexora h2,
+.prose-nexora h3,
+.prose-nexora h4 {
+  @apply mt-5 font-display font-semibold tracking-[-0.01em] text-graphite-950 dark:text-white;
+}
+.prose-nexora h1 {
+  @apply text-xl;
+}
+.prose-nexora h2 {
+  @apply text-lg;
+}
+.prose-nexora h3 {
+  @apply text-base;
+}
+.prose-nexora p {
+  @apply whitespace-pre-wrap;
+}
+.prose-nexora a {
+  @apply font-medium text-electric-600 underline decoration-electric-500/30 underline-offset-2 hover:decoration-electric-500 dark:text-electric-300;
+}
+.prose-nexora ul {
+  @apply list-disc space-y-1 pl-5;
+}
+.prose-nexora ol {
+  @apply list-decimal space-y-1 pl-5;
+}
+.prose-nexora li > p {
+  @apply inline;
+}
+.prose-nexora blockquote {
+  @apply border-l-2 border-electric-500/50 pl-4 italic text-mist-600 dark:text-mist-400;
+}
+.prose-nexora code {
+  @apply rounded bg-mist-100 px-1.5 py-0.5 font-mono text-[0.86em] text-electric-700 dark:bg-white/[0.08] dark:text-electric-200;
+}
+.prose-nexora pre {
+  @apply overflow-x-auto rounded-xl border border-mist-200 bg-navy-950 p-4 text-[13px] leading-6 text-mist-100 dark:border-white/10;
+}
+.prose-nexora pre code {
+  @apply bg-transparent p-0 text-inherit;
+}
+.prose-nexora table {
+  @apply w-full overflow-hidden rounded-lg border border-mist-200 text-sm dark:border-white/10;
+}
+.prose-nexora th {
+  @apply bg-mist-100 px-3 py-2 text-left font-semibold dark:bg-white/[0.06];
+}
+.prose-nexora td {
+  @apply border-t border-mist-200 px-3 py-2 dark:border-white/10;
+}
+.prose-nexora hr {
+  @apply border-mist-200 dark:border-white/10;
+}
+.prose-nexora strong {
+  @apply font-semibold text-graphite-950 dark:text-white;
+}
+
+/* Streaming caret */
+.stream-caret::after {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: -0.15em;
+  border-radius: 1px;
+  background: #2f7bff;
+  animation: blink 1s steps(2, start) infinite;
+}
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Auth decorative grid */
+.auth-grid {
+  background-image: linear-gradient(rgba(91, 149, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91, 149, 255, 0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black, transparent 75%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
